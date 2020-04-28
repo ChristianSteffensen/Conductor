@@ -538,7 +538,7 @@ public abstract class Router {
      * Removes a previously added listener
      */
     @SuppressWarnings("WeakerAccess")
-    public void removeOnRestoreListener() {
+    protected void removeOnRestoreListener() {
         routerRestoredListener = null;
     }
 

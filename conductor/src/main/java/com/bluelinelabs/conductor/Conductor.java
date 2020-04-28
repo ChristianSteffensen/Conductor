@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import com.bluelinelabs.conductor.internal.LifecycleHandler;
 import com.bluelinelabs.conductor.internal.ThreadUtils;
 
@@ -30,12 +32,12 @@ public final class Conductor {
      * @return A fully configured {@link Router} instance for use with this Activity/ViewGroup pair.
      */
     @NonNull @UiThread
-    public static Router attachRouter(@NonNull Activity activity, @NonNull ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public static Router attachRouter(@NonNull Activity activity, @NonNull ViewGroup container, @Nullable Bundle savedInstanceState, @Nullable Router.RouterRestoredListener listener) {
         ThreadUtils.ensureMainThread();
 
         LifecycleHandler lifecycleHandler = LifecycleHandler.install(activity);
 
-        Router router = lifecycleHandler.getRouter(container, savedInstanceState);
+        Router router = lifecycleHandler.getRouter(container, savedInstanceState, listener);
         router.rebindIfNeeded();
 
         return router;

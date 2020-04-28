@@ -19,6 +19,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import com.bluelinelabs.conductor.ActivityHostedRouter;
 import com.bluelinelabs.conductor.Router;
 
@@ -78,12 +80,14 @@ public class LifecycleHandler extends Fragment implements ActivityLifecycleCallb
     }
 
     @NonNull
-    public Router getRouter(@NonNull ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public Router getRouter(@NonNull ViewGroup container, @Nullable Bundle savedInstanceState, @Nullable Router.RouterRestoredListener listener) {
         ActivityHostedRouter router = routerMap.get(getRouterHashKey(container));
         if (router == null) {
             router = new ActivityHostedRouter();
             router.setHost(this, container);
-
+            if (listener != null) {
+                router.addOnRestoreListener(listener);
+            }
             if (savedInstanceState != null) {
                 Bundle routerSavedState = savedInstanceState.getBundle(KEY_ROUTER_STATE_PREFIX + router.getContainerId());
                 if (routerSavedState != null) {
