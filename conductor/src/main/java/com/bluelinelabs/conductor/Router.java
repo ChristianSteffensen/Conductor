@@ -661,8 +661,9 @@ public abstract class Router {
         while (backstackIterator.hasNext()) {
             setControllerRouter(backstackIterator.next().controller);
         }
-
-        routerRestoredListener.onRestoreFinished();
+        if (routerRestoredListener != null) {
+            routerRestoredListener.onRestoreFinished();
+        }
     }
 
     public final void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
