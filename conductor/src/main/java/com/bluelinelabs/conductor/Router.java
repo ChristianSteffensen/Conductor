@@ -39,6 +39,7 @@ public abstract class Router {
     final Backstack backstack = new Backstack();
     private final List<ControllerChangeListener> changeListeners = new ArrayList<>();
     private final List<ChangeTransaction> pendingControllerChanges = new ArrayList<>();
+    private RouterRestoredListener routerRestoredListener = null;
     final List<Controller> destroyingControllers = new ArrayList<>();
 
     private boolean popsLastView = false;
@@ -524,6 +525,24 @@ public abstract class Router {
     }
 
     /**
+     * Adds a listener called after the router has finished calling onRestoreInstanceState
+     *
+     * @param listener The listener
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void addOnRestoreListener(@NonNull RouterRestoredListener listener) {
+        routerRestoredListener = listener;
+    }
+
+    /**
+     * Removes a previously added listener
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void removeOnRestoreListener() {
+        routerRestoredListener = null;
+    }
+
+    /**
      * Attaches this Router's existing backstack to its container if one exists.
      */
     @UiThread
@@ -642,6 +661,8 @@ public abstract class Router {
         while (backstackIterator.hasNext()) {
             setControllerRouter(backstackIterator.next().controller);
         }
+
+        routerRestoredListener.onRestoreFinished();
     }
 
     public final void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -940,6 +961,10 @@ public abstract class Router {
         }
 
         return true;
+    }
+
+    public interface RouterRestoredListener {
+        void onRestoreFinished();
     }
 
     void setControllerRouter(@NonNull Controller controller) {
