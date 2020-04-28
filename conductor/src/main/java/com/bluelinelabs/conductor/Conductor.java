@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
-
 import com.bluelinelabs.conductor.internal.LifecycleHandler;
 import com.bluelinelabs.conductor.internal.ThreadUtils;
 

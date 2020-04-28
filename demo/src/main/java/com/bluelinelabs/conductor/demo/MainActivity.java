@@ -29,7 +29,7 @@ public final class MainActivity extends AppCompatActivity implements ActionBarPr
 
         setSupportActionBar(toolbar);
 
-        router = Conductor.attachRouter(this, container, savedInstanceState);
+        router = Conductor.attachRouter(this, container, savedInstanceState, null);
         if (!router.hasRootController()) {
             router.setRoot(RouterTransaction.with(new HomeController()));
         }
