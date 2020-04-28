@@ -662,7 +662,7 @@ public abstract class Router {
             setControllerRouter(backstackIterator.next().controller);
         }
         if (routerRestoredListener != null) {
-            routerRestoredListener.onRestoreFinished();
+            routerRestoredListener.onRestoreFinished(Router.this);
         }
     }
 
@@ -965,7 +965,7 @@ public abstract class Router {
     }
 
     public interface RouterRestoredListener {
-        void onRestoreFinished();
+        void onRestoreFinished(@NonNull  Router router);
     }
 
     void setControllerRouter(@NonNull Controller controller) {
