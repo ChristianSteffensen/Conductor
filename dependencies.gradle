@@ -1,6 +1,6 @@
 ext {
     minSdkVersion = 16
-    compileSdkVersion = 27
+    compileSdkVersion = 28
     targetSdkVersion = 27
 
     supportVersion = '27.1.1'
@@ -17,9 +17,9 @@ ext {
     roboelectricVersion = '3.8'
     lintVersion = '26.1.2'
 
-    supportV4 = "com.android.support:support-v4:$supportVersion"
-    supportDesign = "com.android.support:design:$supportVersion"
-    supportAnnotations = "com.android.support:support-annotations:$supportVersion"
+    supportV4 = 'androidx.legacy:legacy-support-v4:1.0.0'
+    supportDesign = 'com.google.android.material:material:1.0.0'
+    supportAnnotations = 'androidx.annotation:annotation:1.0.0'
     supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
 
     butterknife = "com.jakewharton:butterknife:$butterknifeVersion"
@@ -41,8 +41,8 @@ ext {
 
     autodispose = "com.uber.autodispose:autodispose:$autodisposeVersion"
 
-    archComponentsLifecycle = "android.arch.lifecycle:runtime:$archComponentsVersion"
-    archComponentsLiveDataCore = "android.arch.lifecycle:livedata-core:$archComponentsVersion"
+    archComponentsLifecycle = 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    archComponentsLiveDataCore = 'androidx.lifecycle:lifecycle-livedata-core:2.0.0'
 
     junit = "junit:junit:$junitVersion"
     roboelectric = "org.robolectric:robolectric:$roboelectricVersion"

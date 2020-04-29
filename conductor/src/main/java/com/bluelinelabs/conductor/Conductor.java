@@ -2,10 +2,11 @@ package com.bluelinelabs.conductor;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 
 import com.bluelinelabs.conductor.internal.LifecycleHandler;
 import com.bluelinelabs.conductor.internal.ThreadUtils;
@@ -29,7 +30,8 @@ public final class Conductor {
      *                           for restoring the Router's state if possible.
      * @return A fully configured {@link Router} instance for use with this Activity/ViewGroup pair.
      */
-    @NonNull @UiThread
+    @NonNull
+    @UiThread
     public static Router attachRouter(@NonNull Activity activity, @NonNull ViewGroup container, @Nullable Bundle savedInstanceState, @Nullable Router.RouterRestoredListener listener) {
         ThreadUtils.ensureMainThread();
 
