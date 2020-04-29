@@ -2,15 +2,15 @@ package com.bluelinelabs.conductor.demo.controllers;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import androidx.annotation.ColorRes;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.ControllerChangeHandler;
@@ -24,9 +24,9 @@ import com.bluelinelabs.conductor.demo.changehandler.CircularRevealChangeHandler
 import com.bluelinelabs.conductor.demo.changehandler.FlipChangeHandler;
 import com.bluelinelabs.conductor.demo.controllers.base.BaseController;
 import com.bluelinelabs.conductor.demo.util.BundleBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TransitionDemoController extends BaseController {
@@ -57,7 +57,8 @@ public class TransitionDemoController extends BaseController {
     }
 
     @BindView(R.id.tv_title) TextView tvTitle;
-    @BindView(R.id.btn_next) FloatingActionButton btnNext;
+    @BindView(R.id.btn_next)
+    FloatingActionButton btnNext;
     @BindView(R.id.transition_root) View containerView;
 
     private TransitionDemo transitionDemo;
@@ -83,7 +84,7 @@ public class TransitionDemoController extends BaseController {
     protected void onViewBound(@NonNull View view) {
         super.onViewBound(view);
 
-        View bgView = ButterKnife.findById(view, R.id.bg_view);
+        View bgView = view.findViewById(R.id.bg_view);
         if (transitionDemo.colorId != 0 && bgView != null) {
             bgView.setBackgroundColor(ContextCompat.getColor(getActivity(), transitionDemo.colorId));
         }

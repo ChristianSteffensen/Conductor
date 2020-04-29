@@ -1,11 +1,11 @@
 package com.bluelinelabs.conductor.demo.controllers;
 
-import androidx.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import androidx.core.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
@@ -13,6 +13,7 @@ import com.bluelinelabs.conductor.RouterTransaction;
 import com.bluelinelabs.conductor.demo.R;
 import com.bluelinelabs.conductor.demo.controllers.base.BaseController;
 import com.bluelinelabs.conductor.support.RouterPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.Locale;
 
@@ -22,8 +23,10 @@ public class PagerController extends BaseController {
 
     private int[] PAGE_COLORS = new int[]{R.color.green_300, R.color.cyan_300, R.color.deep_purple_300, R.color.lime_300, R.color.red_300};
 
-    @BindView(R.id.tab_layout) TabLayout tabLayout;
-    @BindView(R.id.view_pager) ViewPager viewPager;
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
+    @BindView(R.id.view_pager)
+    ViewPager viewPager;
 
     private final RouterPagerAdapter pagerAdapter;
 
