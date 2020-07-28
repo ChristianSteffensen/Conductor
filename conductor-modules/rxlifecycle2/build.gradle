@@ -20,11 +20,11 @@ android {
 }
 
 dependencies {
-    api rootProject.ext.rxJava2
-    api rootProject.ext.rxLifecycle2
-    api rootProject.ext.rxLifecycleAndroid2
+    api rootProject.ext.rxJava3
+    api rootProject.ext.rxLifecycle3
+    api rootProject.ext.rxLifecycleAndroid3
 
     implementation project(':conductor')
 }
 
-ext.artifactId = 'conductor-rxlifecycle2'
+ext.artifactId = 'conductor-rxlifecycle4'

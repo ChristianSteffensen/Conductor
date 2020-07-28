@@ -1,13 +1,15 @@
 package com.bluelinelabs.conductor.rxlifecycle2;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.view.View;
 
-import com.bluelinelabs.conductor.Controller;
-import com.trello.rxlifecycle2.OutsideLifecycleException;
+import androidx.annotation.NonNull;
 
-import io.reactivex.subjects.BehaviorSubject;
+import com.bluelinelabs.conductor.Controller;
+import com.trello.rxlifecycle4.OutsideLifecycleException;
+
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+
 
 public class ControllerLifecycleSubjectHelper {
     private ControllerLifecycleSubjectHelper() {

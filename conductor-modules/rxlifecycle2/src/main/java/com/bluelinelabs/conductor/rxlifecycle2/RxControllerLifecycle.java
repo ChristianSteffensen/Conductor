@@ -1,20 +1,22 @@
 package com.bluelinelabs.conductor.rxlifecycle2;
 
 import androidx.annotation.NonNull;
-import com.trello.rxlifecycle2.LifecycleTransformer;
-import com.trello.rxlifecycle2.OutsideLifecycleException;
-import com.trello.rxlifecycle2.RxLifecycle;
-import io.reactivex.Observable;
-import io.reactivex.functions.Function;
+
+import com.trello.rxlifecycle4.LifecycleTransformer;
+import com.trello.rxlifecycle4.OutsideLifecycleException;
+import com.trello.rxlifecycle4.RxLifecycle;
+
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.functions.Function;
 
 public class RxControllerLifecycle {
 
     /**
      * Binds the given source to a Controller lifecycle. This is the Controller version of
-     * {@link com.trello.rxlifecycle2.android.RxLifecycleAndroid#bindFragment(Observable)}.
+     * {@link com.trello.rxlifecycle4.android.RxLifecycleAndroid#bindFragment(Observable)}.
      *
      * @param lifecycle the lifecycle sequence of a Controller
-     * @return a reusable {@link io.reactivex.ObservableTransformer} that unsubscribes the source during the Controller lifecycle
+     * @return a reusable {@link io.reactivex.rxjava3.core.ObservableTransformer} that unsubscribes the source during the Controller lifecycle
      */
     public static <T> LifecycleTransformer<T> bindController(@NonNull final Observable<ControllerEvent> lifecycle) {
         return RxLifecycle.bind(lifecycle, CONTROLLER_LIFECYCLE);
