@@ -1,13 +1,15 @@
 package com.bluelinelabs.conductor.autodispose;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.view.View;
 
-import com.bluelinelabs.conductor.Controller;
-import com.uber.autodispose.OutsideLifecycleException;
+import androidx.annotation.NonNull;
 
-import io.reactivex.subjects.BehaviorSubject;
+import com.bluelinelabs.conductor.Controller;
+
+import autodispose2.OutsideScopeException;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
+
 
 public class ControllerLifecycleSubjectHelper {
     private ControllerLifecycleSubjectHelper() { }
@@ -16,7 +18,7 @@ public class ControllerLifecycleSubjectHelper {
     public static BehaviorSubject<ControllerEvent> create(@NonNull Controller controller) {
         ControllerEvent initialState;
         if (controller.isBeingDestroyed() || controller.isDestroyed()) {
-            throw new OutsideLifecycleException("Cannot bind to Controller lifecycle when outside of it.");
+            throw new OutsideScopeException("Cannot bind to Controller lifecycle when outside of it.");
         } else if (controller.isAttached()) {
             initialState = ControllerEvent.ATTACH;
         } else if (controller.getView() != null) {
